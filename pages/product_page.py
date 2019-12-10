@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoAlertPresentException
 from .base_page import BasePage
 from .locators import ProductPageLocators
@@ -18,6 +19,19 @@ class ProductPage(BasePage):
         print(price)
         print(self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_ADDED_IN_CART).text)
         assert price in self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_ADDED_IN_CART).text
+
+    def put_item_to_basket(self):
+        basket_btn = self.browser.find_element(*ProductPageLocators.ADD_TO_CART)
+        basket_btn.click()
+
+    def test_guest_cant_see_success_message_after_adding_product_to_basket(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADD_TO_CART_SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def test_guest_cant_see_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADD_TO_CART_SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def test_message_disappeared_after_adding_product_to_basket(self):
+        assert self.is_disappeared(*ProductPageLocators.ADD_TO_CART_SUCCESS_MESSAGE), "Success message is presented, but should be disappeared"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
