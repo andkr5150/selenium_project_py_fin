@@ -23,3 +23,8 @@ class ProductPageLocators():
     PRODUCT_NAME_ADDED_IN_CART = (By.CSS_SELECTOR, ".alert-success:nth-child(1) strong")
     ADD_TO_CART_SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages > :nth-child(1)")
 
+
+class BasketPageLocators():
+    BASKET_EMPTY_MESSAGE = (By.XPATH, "//p[contains(text(), 'пуста')]")
+    ITEM_IN_BASKET = (By.CSS_SELECTOR, "[class='basket-items']")
+    BASKET_BUTTON = (By.CSS_SELECTOR, "a[class='btn btn-default']")
