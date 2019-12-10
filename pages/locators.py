@@ -21,6 +21,8 @@ class BasePageLocators():
     LOGIN_FORM = (By.ID, "login_form")
     REGISTER_FORM = (By.ID, "register_form")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
+    FIND_INPUT = (By.CSS_SELECTOR, "#id_q")
+    FIND_BUTTON = (By.CSS_SELECTOR, "input[type = 'submit']")
 
 
 class ProductPageLocators():
@@ -32,6 +34,8 @@ class ProductPageLocators():
     ADD_TO_CART_SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages > :nth-child(1)")
     ITEM_ADDED_MESSAGE = (By.XPATH, "(//div[@class='alertinner '])[1]")
     ITEM_PRICE_MESSAGE = (By.XPATH, "//div[@class='alertinner ']/p/strong")
+    ITEM_PRODUCT = (By.CSS_SELECTOR, "#id_sort_by")
+    ITEM_PRODUCTS = (By.CSS_SELECTOR, ".product_pod")
 
 
 class BasketPageLocators():

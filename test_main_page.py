@@ -55,3 +55,15 @@ class TestLoginFromMainPage():
         page.go_to_login_page()
         page = LoginPage(browser, browser.current_url)
         page.should_be_login_url()
+
+
+@pytest.mark.need_review_custom_scenarios
+def test_is_find_items(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)
+    page.open()
+    page.find_button()
+    page.find_item()
+    page.view_product_page()
+    page.view_product_page_count()
+

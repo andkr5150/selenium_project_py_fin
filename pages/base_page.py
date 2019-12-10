@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from .locators import BasePageLocators
 from selenium.webdriver.support.ui import Select
+from .locators import ProductPageLocators
 
 
 class BasePage:
@@ -55,3 +56,18 @@ class BasePage:
     def go_to_basket(self):
         basket = self.browser.find_element(*BasePageLocators.BASKET_BUTTON)
         basket.click()
+
+    def find_button(self):
+        assert self.browser.find_element(*BasePageLocators.FIND_BUTTON), "Find button is not presented"
+
+    def find_item(self):
+        find_input = self.browser.find_element(*BasePageLocators.FIND_INPUT)
+        find_input.send_keys("Hack")
+        find = self.browser.find_element(*BasePageLocators.FIND_BUTTON)
+        find.click()
+
+    def view_product_page(self):
+        assert self.browser.find_element(*ProductPageLocators.ITEM_PRODUCT), "It is not product page"
+
+    def view_product_page_count(self):
+        assert len(self.browser.find_elements(*ProductPageLocators.ITEM_PRODUCTS)) >= 3, "It is not product page"
